@@ -6,7 +6,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>FSDN.ZooExercise.MainClass</StartupObject>
+    <StartupObject>FSDN.PetStore.MainClass</StartupObject>
   </PropertyGroup>
 
 </Project>
