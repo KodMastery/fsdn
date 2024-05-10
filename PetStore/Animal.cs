@@ -19,5 +19,11 @@
         {
            Console.WriteLine($"Hug the pet <3 {Name}"); //Hug the pet <3 { GetName() => return name; }
         }
+
+        internal virtual void Run(int km)
+        {
+            Console.WriteLine($"I am running {km} kilometers");
+        }
+
     }
 }

@@ -43,6 +43,8 @@
             //Console.WriteLine(petStore);
             //Console.WriteLine(petStore2);
 
+            Animal c = new Cat();
+            c.Run(20);
         }
             
     }

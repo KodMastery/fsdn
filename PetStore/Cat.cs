@@ -20,5 +20,10 @@
             c.Age = 2;
         }
 
+        internal override void Run(int km)
+        {
+            Console.WriteLine($"I am running these {km} kilometers way faster because i am A CAT  ");
+        }
+
     }
 }

@@ -1,33 +1,61 @@
-﻿namespace FSDN.OpeartorOverloading
+﻿
+namespace FSDN.OpeartorOverloading
 {
-    public class Animal
+    
+    public class MainClass : Object
     {
-        public string Name { get; set; }
-    }
-
-    public class PetStore
-    {
-        public List<Animal> Animals { get; set; } = new List<Animal>();
-        public static PetStore operator *(PetStore store1, PetStore store2)
+        internal class Animal
         {
-            var combinedStore = new PetStore();
-            combinedStore.Animals.AddRange(store1.Animals);
-            combinedStore.Animals.AddRange(store2.Animals);
-            return combinedStore;
+            internal string Name { get; set; }
         }
 
-    }
+        internal class PetStore
+        {
+            internal List<Animal> Animals { get; set; }
 
-    public class MainClass()
-    {
+            internal PetStore()
+            {
+                Animals = new List<Animal>();
+            }
+
+            public static PetStore operator +(PetStore firstStore, PetStore secondStore)
+            {
+                PetStore combined = new PetStore();
+                combined.Animals.AddRange(firstStore.Animals);
+                combined.Animals.AddRange(secondStore.Animals);
+                return combined;
+            }
+
+        }
+
+
+
         public static void Main(string[] args)
         {
-            PetStore store1 = new PetStore();
-            store1.Animals.Add(new Animal { Name = "Dog" });
-            PetStore store2 = new PetStore();
-            store2.Animals.Add(new Animal { Name = "Cat" });
-            PetStore combinedStore = store1 * store2;
-            Console.WriteLine(combinedStore);
+            Animal cow = new Animal();
+            cow.Name = "Milka";
+
+            Animal monkey = new Animal();
+            monkey.Name = "Monke";
+
+            Animal cat = new Animal();
+            cat.Name = "Mathilda";
+
+
+            PetStore a = new PetStore();
+            a.Animals.Add(monkey);
+            a.Animals.Add(cow);
+
+            PetStore b = new PetStore();
+            b.Animals.Add(cat);
+
+            PetStore c = a + b;
+
+            foreach (Animal animal in c.Animals)
+            {
+                Console.WriteLine(animal.Name);
+            }
+
         }
     }
 

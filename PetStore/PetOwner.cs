@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FSDN.PetStore
 {
-    internal struct PetOwner
+    public struct PetOwner
     {
         internal string Name { get; set; }
         internal string Surname { get; set; }
