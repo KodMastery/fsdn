@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
+using FSDN.Algorithms.HashBased;
 
 namespace FSDN.Algorithms.LinkedList.test
 {
@@ -10,16 +7,26 @@ namespace FSDN.Algorithms.LinkedList.test
     {
         public static void Main(string[] args)
         {
-            SinglyLinkedList<string> list = new SinglyLinkedList<string>();
-            list.AddFirst("Hey");
-            list.AddLast("Last");
-            list.AddLast("Now i Am Last");
-            list.AddFirst("Now i am first");
-            list.PrintList();
-            list.Remove("Hey");
-            Console.WriteLine();
-            list.PrintList();
-            Console.WriteLine(list.Contains("Hey"));
+            HashTable<string, int> table = new HashTable<string, int>();
+            table.Add("Sunrise", 5);
+            table.Add("Evening", 19);
+            table.Add("Morning", 8);
+            table.Add("Morning", 10);
+            table.Add("Sunrise", 190);
+            table.Add("Evening", 321);
+            table.Add("Morning", 832);
+            table.Add("Morning", 321321321);
+
+            int value = table.Get("Sunrise");
+            Console.WriteLine(value);
+
+            for (int i = 0; i < 1000000; i++)
+            {
+                table.Add(i.ToString(), i);
+            }
+
+            //O(n) 1000000/100 => 10000 O(n/100)
+            table.Add("9999", 999999);
         }
     }
 }

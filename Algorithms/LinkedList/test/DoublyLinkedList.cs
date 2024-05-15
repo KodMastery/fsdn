@@ -59,6 +59,7 @@ namespace FSDN.Algorithms.LinkedList
                if (current.Data.Equals(data))
                {
                     ValidatePositionAndRemoveNode(current);
+                    break;
                }
                current = current.Next;
            }

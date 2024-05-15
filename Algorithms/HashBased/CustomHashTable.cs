@@ -14,6 +14,24 @@
             }
         }
 
+        private const int InitialSize = 10;
+        private HashNode[] buckets;
+
+        public CustomHashTable()
+        {
+            buckets = new HashNode[InitialSize];
+        }
+
+        internal void Add(TKey key, TValue value)
+        {
+
+        }
+
+        private int GetBucketIndex(TKey key)
+        {
+            return Math.Abs(key.GetHashCode() % buckets.Length);
+        }
+
 
     }
 }
