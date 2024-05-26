@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using FSDN.Algorithms.HashBased;
+﻿
+
+using FSDN.Algorithms.Queue;
 
 namespace FSDN.Algorithms.LinkedList.test
 {
@@ -7,26 +8,48 @@ namespace FSDN.Algorithms.LinkedList.test
     {
         public static void Main(string[] args)
         {
-            HashTable<string, int> table = new HashTable<string, int>();
-            table.Add("Sunrise", 5);
-            table.Add("Evening", 19);
-            table.Add("Morning", 8);
-            table.Add("Morning", 10);
-            table.Add("Sunrise", 190);
-            table.Add("Evening", 321);
-            table.Add("Morning", 832);
-            table.Add("Morning", 321321321);
+            int[] arr = {8, 10, -5, 18, 60, 99};
 
-            int value = table.Get("Sunrise");
-            Console.WriteLine(value);
+            List<int> list = BiggerThanTarget(15, arr);
 
-            for (int i = 0; i < 1000000; i++)
+            foreach (var element in list)
             {
-                table.Add(i.ToString(), i);
+                Console.WriteLine(element);
             }
 
-            //O(n) 1000000/100 => 10000 O(n/100)
-            table.Add("9999", 999999);
+        }
+        static List<int> BiggerThanTarget(int target, int[] arr)
+        {
+            //check if arr has at least 1 element
+
+            List<int> list = new List<int>();
+
+            /*
+             * code
+             */
+
+
+            return list;
+        }
+
+        static int FindBiggestNumber(int[] arr)
+        {
+            //check if array has at least one element :)
+            if (arr.Length == 0) return default;
+
+            int x = arr[0];
+
+            for (int i = 1; i < arr.Length; i++)
+            {
+                //is x smaller than the element we are currently iterating?
+                //if yes -> x = the current element
+                if (x < arr[i])
+                {
+                    x = arr[i];
+                }
+            }
+
+            return x;
         }
     }
 }

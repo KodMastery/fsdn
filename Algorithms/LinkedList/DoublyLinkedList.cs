@@ -23,6 +23,11 @@ namespace FSDN.Algorithms.LinkedList
         private Node head;
         private Node tail;
 
+        internal T GetHeadValue()
+        {
+            return head.Value;
+        }
+
         internal void AddFirst(T value)
         {
             Node a = new Node(value);
@@ -57,7 +62,7 @@ namespace FSDN.Algorithms.LinkedList
                 a.Prev = tail;
                 tail = a;
             }
-
+      
         }
 
         internal void Remove(T value)
@@ -95,9 +100,52 @@ namespace FSDN.Algorithms.LinkedList
                 tmp.Prev.Next = tmp.Next;
                 tmp.Next.Prev = tmp.Prev;
             }
+
         }
 
         internal void PrintList()
+        {
+            Node tmp = tail;
+            while (tmp != null)
+            {
+                Console.WriteLine(tmp.Value);
+                tmp = tmp.Prev;
+            }
+        }
+
+        internal T RemoveLast()
+        {
+            if (head == null && tail == null)
+            {
+                return default;
+            }
+            else if (head == tail)
+            {
+                T value = head.Value;
+                head = null;
+                tail = null;
+                return value;
+            }
+            else
+            {
+                T valueToReturn = tail.Value;
+                tail.Prev.Next = null;
+                tail = tail.Prev;
+                return valueToReturn;
+            }
+        }
+
+        internal T GetLast()
+        {
+            if (head == null && tail == null)
+            {
+                return default;
+            }
+
+            return tail.Value;
+        }
+
+        internal void PrintListForQueue()
         {
             Node tmp = head;
             while (tmp != null)
@@ -105,6 +153,43 @@ namespace FSDN.Algorithms.LinkedList
                 Console.WriteLine(tmp.Value);
                 tmp = tmp.Next;
             }
+        }
+
+        internal T RemoveFirst()
+        {
+            if (head == null && tail == null)
+            {
+                return default;
+            }
+
+            if (head == tail)
+            {
+                T removed = head.Value;
+                head = null;
+                tail = null;
+                return removed;
+            }
+            else
+            {
+                T removed = head.Value;
+                head.Next.Prev = null;
+                head = head.Next;
+                return removed;
+            }
+        }
+
+        internal bool Contains(T element)
+        {
+            Node tmp = head;
+            while (tmp != null)
+            {
+                if (tmp.Value.Equals(element))
+                {
+                    return true;
+                }
+                tmp = tmp.Next;
+            }
+            return false;
         }
     }
 }

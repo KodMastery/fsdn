@@ -55,9 +55,37 @@
             }
         }
 
+        internal void Remove(K key)
+        {
+            int keyHashCode = key.GetHashCode();
+            int bucketIndex = Math.Abs(keyHashCode % capacity);
+            Node bucketNode = buckets[bucketIndex];
+            Node prevNode = null;
+            while (bucketNode != null)
+            {
+                if (bucketNode.Key.Equals(key))
+                {
+                    if (prevNode == null)
+                    {
+                        buckets[bucketIndex] = bucketNode.Next;
+                    }
+                    else
+                    {
+                        prevNode.Next = bucketNode.Next;
+                    }
+
+                    break;
+                }
+                prevNode = bucketNode;
+                bucketNode = bucketNode.Next;
+            }
+        }
+
         internal V Get(K key)
         {
-            Node bucketNode = GetBucketNodeByIndex(key);
+            int keyHashCode = key.GetHashCode();
+            int bucketIndex = Math.Abs(keyHashCode % capacity);
+            Node bucketNode = buckets[bucketIndex];
             while (bucketNode != null)
             {
                 if (bucketNode.Key.Equals(key))
@@ -70,11 +98,5 @@
             throw new NullReferenceException();
         }
 
-        private Node GetBucketNodeByIndex(K? key)
-        {
-            int keyHashCode = key.GetHashCode();
-            int bucketIndex = Math.Abs(keyHashCode % capacity);
-            return buckets[bucketIndex];
-        }
     }
 }
