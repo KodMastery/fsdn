@@ -6,7 +6,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>FSDN.Algorithms.LinkedList.test.MainCLass</StartupObject>
+	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+	  <StartupObject>FSDN.LINQ.LinqMain</StartupObject>
   </PropertyGroup>
 
 </Project>
